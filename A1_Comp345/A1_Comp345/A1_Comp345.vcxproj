@@ -67,6 +67,7 @@
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="RiskMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graph.h" />
@@ -74,7 +75,14 @@
     <ClInclude Include="RiskMap.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="countryList.txt" />
+    <Text Include="Africa.txt" />
+    <Text Include="Asia.txt" />
+    <Text Include="Australia.txt" />
+    <Text Include="boarders.txt" />
+    <Text Include="Continents.txt" />
+    <Text Include="Europe.txt" />
+    <Text Include="North America.txt" />
+    <Text Include="South America.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

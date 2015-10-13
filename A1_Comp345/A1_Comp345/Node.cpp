@@ -3,8 +3,11 @@
 //defines a county in the risk game
 //the name, number of troops on the node
 //the list of countries it is ajacent to
-Node::Node()
+Node::Node(std::string name, int num)
 {
+	Node::countryName = name;
+	Node::numOfTroops = num;
+	//read file of boarders
 
 }
 Node::~Node()

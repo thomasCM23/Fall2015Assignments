@@ -10,7 +10,7 @@ private:
 	std::vector<Node> boarders;
 public:
 	//accessor and mutators
-	Node();
+	Node(std::string name, int num);
 	~Node();
 	void setCountryName(std::string name);
 	void setNumOfTroops(int number);

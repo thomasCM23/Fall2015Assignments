@@ -1,0 +1,19 @@
+Quebec:,Greenland,Ontario,Eastern United States
+Alaska:,Northwest Territory,Alberta
+Eastern United States:,Western United States,Central America,Ontario,Quebec
+Greenland:,Ontario,Quebec,Northwest Territory,Iceland
+Alberta:,Northwest Territory,Ontario,Western United States,Alaska
+Central America:,Western United States,Eastern United States,Venezuela
+Northwest Territory:,Ontario,Alberta,Alaska,Greenland
+Ontario:,Quebec,Alberta,Northwest Territory,Western United States,Eastern United States
+Western United States:,Eastern United States,Central America,Alberta,Ontario
+Venezuela:,Brazil,Peru,Central America
+Argentina:,Brazil,Peru,
+Brazil:,North Africa,Peru,Argentina,Venezuela
+Peru:,Brazil,Argentina,Venezuela
+Congo:,South Africa,East Africa,North Africa
+East Africa:,Egypt,South Africa,Congo,Madagascar,Middle East
+Egypt:,Southern Europe,Middle East,North Africa,East Africa
+Madagascar:,South Africa,East Africa
+North Africa:,Congo,East Africa,Egypt,Western Europe,Southern Europe
+South Africa:,Congo,East Africa,Madagascar

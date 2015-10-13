@@ -24,6 +24,9 @@
     <ClCompile Include="Graph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RiskMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Node.h">
@@ -37,7 +40,28 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="countryList.txt">
+    <Text Include="Continents.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="North America.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="South America.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Africa.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Asia.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Europe.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Australia.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="boarders.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

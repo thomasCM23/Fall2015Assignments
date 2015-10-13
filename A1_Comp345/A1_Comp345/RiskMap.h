@@ -18,6 +18,7 @@ public:
 	void loadContinentsFromFile();
 	vector<Graph> getWorld();
 	vector<Node> getContinentbyIndex(int index);
+	bool searchForCountry(string name);
 };
 
 #endif
