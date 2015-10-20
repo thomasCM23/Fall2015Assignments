@@ -12,8 +12,9 @@ Graph::Graph(std::string name)
 	{
 		while (std::getline(fin, nameOfCountry))
 		{
-			Node toBePushed(nameOfCountry, 0);
-			Graph::contriesOnContinent.push_back(toBePushed);
+			Node *toBePushed;
+			toBePushed = new Node(nameOfCountry, 0);
+			this->contriesOnContinent.push_back(toBePushed);
 		}
 	}
 	fin.close();
@@ -33,8 +34,8 @@ void Graph::InstantiateMapLinks()
 		//open file with boarder links
 		std::ifstream boarders;
 		boarders.open("boarders.txt");
-		
-		std::regex nameOfCountryRx("^" + Graph::contriesOnContinent.at(i).getCountryName() + "(.*)");
+		std::cout << (this->contriesOnContinent.at(i)->getCountryName()) << std::endl;
+		std::regex nameOfCountryRx("^" + (this->contriesOnContinent.at(i)->countryName) + "(.*)");
 		while (!boarders.eof())
 		{
 			std::string lineInBoarderTxt;
@@ -50,16 +51,15 @@ void Graph::InstantiateMapLinks()
 				while (std::getline(ss, split, ',')) {
 					for (int j = 0; j < Graph::contriesOnContinent.size(); j++)
 					{
-						if (Graph::contriesOnContinent.at(j).getCountryName() == split)
+						if (this->contriesOnContinent.at(j)->countryName == split)
 						{
-							Node link = Graph::contriesOnContinent.at(j);
-							Graph::contriesOnContinent.at(i).addBoarders(link);
+							this->contriesOnContinent.at(i)->addBoarders(Graph::contriesOnContinent.at(j));
 						}
 						else if (false)
 						{
 							//links that are not part of this continent
-							Node link = Graph::contriesOnContinent.at(j);
-							Graph::contriesOnContinent.at(i).addBoarders(link);
+							//Node *link = &Graph::contriesOnContinent.at(j);
+							//Graph::contriesOnContinent.at(i).addBoarders(link);
 						}
 					}
 				}
@@ -73,19 +73,19 @@ void Graph::InstantiateMapLinks()
 	}
 	
 }
-void Graph::setContinent(std::vector<Node> listOfContries)
+void Graph::setContinent(std::vector<Node*> listOfContries)
 {
 	contriesOnContinent = listOfContries;
 }
-std::vector<Node> Graph::getContinent()
+std::vector<Node*> Graph::getContinent()
 {
-	return contriesOnContinent;
+	return this->contriesOnContinent;
 }
-void Graph::addCountryToContinent(Node newCountry)
+void Graph::addCountryToContinent(Node* newCountry)
 {
-	contriesOnContinent.push_back(newCountry);
+	this->contriesOnContinent.push_back(newCountry);
 }
-Node Graph::getInfoAboutCountryByIndex(int index)
+Node* Graph::getInfoAboutCountryByIndex(int index)
 {
 	return contriesOnContinent.at(index);
 }

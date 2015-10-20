@@ -14,13 +14,13 @@ Node::~Node()
 {
 
 }
-void Node::addBoarders(Node T)
+void Node::addBoarders(Node* T)
 {
-	Node::boarders.push_back(T);
+	this->boarders.push_back(T);
 }
-void Node::setBoarders(std::vector<Node> T)
+void Node::setBoarders(std::vector<Node*> T)
 {
-	Node::boarders = T;
+	this->boarders = T;
 }
 void Node::setCountryName(std::string name)
 {
@@ -36,9 +36,9 @@ int Node::getNumOfTroops()
 }
 std::string Node::getCountryName()
 {
-	return countryName;
+	return this->countryName;
 }
-std::vector<Node> Node::getBoarders()
+std::vector<Node*> Node::getBoarders()
 {
-	return boarders;
+	return this->boarders;
 }

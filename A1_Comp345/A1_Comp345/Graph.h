@@ -10,15 +10,15 @@
 class Graph
 {
 private:
-	std::vector<Node> contriesOnContinent;
+	std::vector<Node*> contriesOnContinent;
 	std::string continentName;
 public:
 	Graph(std::string name);
 	~Graph();
-	std::vector<Node> getContinent();
-	void setContinent(std::vector<Node> listOfCountries);
-	void addCountryToContinent(Node newContry);
-	Node getInfoAboutCountryByIndex(int index);
+	std::vector<Node*> getContinent();
+	void setContinent(std::vector<Node*> listOfCountries);
+	void addCountryToContinent(Node* newContry);
+	Node* getInfoAboutCountryByIndex(int index);
 	void setContinentName(std::string name);
 	std::string getContinentName();
 	void InstantiateMapLinks();
