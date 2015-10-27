@@ -71,6 +71,7 @@ void RiskMap::instantiateMapLinks()
 					}
 				}
 			}
+			boarders.close();
 			cout << endl;
 		}
 		cout << "-------------" << endl;
