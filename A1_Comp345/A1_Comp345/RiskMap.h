@@ -4,6 +4,8 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <regex>
+#include <sstream>
 #include "Node.h"
 #include "Graph.h"
 using namespace std;
@@ -18,7 +20,9 @@ public:
 	void loadContinentsFromFile();
 	vector<Graph> getWorld();
 	vector<Node> getContinentbyIndex(int index);
-	bool searchForCountry(string name);
+	Node* searchForCountry(string name);
+protected:
+	void instantiateMapLinks();
 };
 
 #endif

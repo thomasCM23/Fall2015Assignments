@@ -8,11 +8,13 @@ private:
 	
 	int numOfTroops;
 	std::vector<Node*> boarders;
+	
 public:
 	std::string countryName;
 	//accessor and mutators
 	Node(std::string name, int num);
 	~Node();
+	Node(const Node &obj);
 	void setCountryName(std::string name);
 	void setNumOfTroops(int number);
 	void setBoarders(std::vector<Node*> continent);

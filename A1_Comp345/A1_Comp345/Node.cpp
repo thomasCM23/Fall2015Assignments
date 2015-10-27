@@ -5,18 +5,21 @@
 //the list of countries it is ajacent to
 Node::Node(std::string name, int num)
 {
-	Node::countryName = name;
-	Node::numOfTroops = num;
+	this->countryName = name;
+	this->numOfTroops = num;
 	//read file of boarders
 
 }
 Node::~Node()
 {
-
 }
 void Node::addBoarders(Node* T)
 {
 	this->boarders.push_back(T);
+}
+Node::Node(const Node &obj)
+{
+
 }
 void Node::setBoarders(std::vector<Node*> T)
 {
@@ -24,11 +27,11 @@ void Node::setBoarders(std::vector<Node*> T)
 }
 void Node::setCountryName(std::string name)
 {
-	Node::countryName = name;
+	this->countryName = name;
 }
 void Node::setNumOfTroops(int num)
 {
-	Node::numOfTroops = num;
+	this->numOfTroops = num;
 }
 int Node::getNumOfTroops()
 {

@@ -14,25 +14,82 @@ RiskMap::RiskMap()
 		}
 	}
 	fin.close();
-	for (int i = 0; i < RiskMap::world.size(); i++)
+	RiskMap::instantiateMapLinks();
+	/*for (int i = 0; i < RiskMap::world.size(); i++)
 	{
 		RiskMap::world.at(i).InstantiateMapLinks();
+	}*/
+}
+void RiskMap::instantiateMapLinks()
+{
+	for (int i = 0; i < this->world.size(); i++)
+	{
+		cout << "-------------" << endl;
+		cout << this->world.at(i).getContinentName() << endl;
+		cout << endl;
+		Graph *Continent = &this->world.at(i);
+		for (int j = 0; j < Continent->getContinent().size(); j++)
+		{
+			ifstream boarders;
+			boarders.open("boarders.txt");
+			cout << (Continent->getContinent().at(j)->getCountryName())<<":  ";
+
+			regex nameOfCountryRx("^" + (Continent->getContinent().at(j)->countryName) + "(.*)");
+			while (!boarders.eof())
+			{
+				string lineInBoarderTxt;
+				getline(boarders, lineInBoarderTxt);
+				if (regex_match(lineInBoarderTxt, nameOfCountryRx))
+				{
+					size_t pos = lineInBoarderTxt.find(":");
+					int first = (int)pos + 1;
+					lineInBoarderTxt = lineInBoarderTxt.substr(first, lineInBoarderTxt.length());
+					istringstream ss(lineInBoarderTxt);
+					string split;
+					while (std::getline(ss, split, ',')) 
+					{
+						for (int k = 0; k < Continent->getContinent().size(); k++)
+						{
+							if (Continent->getContinent().at(k)->countryName == split)
+							{
+								Continent->getContinent().at(j)->addBoarders(Continent->getContinent().at(k));
+								cout << split << ", ";
+								break;
+							}
+							else
+							{
+								//looking through other continents to find the node
+								Node* prt = this->searchForCountry(split);
+								if (prt != nullptr)
+								{
+									cout << split << ", ";
+									Continent->getContinent().at(j)->addBoarders(prt);
+									break;
+								}
+							}
+						}
+					}
+				}
+			}
+			cout << endl;
+		}
+		cout << "-------------" << endl;
 	}
 }
-bool RiskMap::searchForCountry(string name)
+Node* RiskMap::searchForCountry(string name)
 {
-	for (int i = 0; i < RiskMap::world.size(); i++)
+	Node* retVal;
+	retVal = nullptr;
+	for (int i = 0; i < this->world.size(); i++)
 	{
-		vector<Node*> ContriesOnContinent = RiskMap::world.at(i).getContinent();
-		for (int j = 0; j < ContriesOnContinent.size(); j++)
+		Graph *Continent = &this->world.at(i);
+		for (int j = 0; j < Continent->getContinent().size(); j++)
 		{
-			if (ContriesOnContinent.at(j)->getCountryName() == name)
+			if (Continent->getContinent().at(j)->countryName == name)
 			{
-				return true;
+				return Continent->getContinent().at(j);
 			}
 		}
 	}
-
-
-	return false;
+	return retVal;
 }
