@@ -44,3 +44,11 @@ std::vector<Node*> Node::getBoarders()
 {
 	return this->boarders;
 }
+Player* Node::getOwner()
+{
+	return this->owner;
+}
+void Node::setOwner(Player *owner)
+{
+	this->owner = owner;
+}

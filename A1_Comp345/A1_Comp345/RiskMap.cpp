@@ -22,17 +22,18 @@ RiskMap::RiskMap()
 }
 void RiskMap::instantiateMapLinks()
 {
+	std::cout << "Setting up map..." << endl;
 	for (int i = 0; i < this->world.size(); i++)
 	{
-		cout << "-------------" << endl;
-		cout << this->world.at(i).getContinentName() << endl;
-		cout << endl;
+		std::cout << "-------------" << endl;
+		std::cout << this->world.at(i).getContinentName() << endl;
+		std::cout << endl;
 		Graph *Continent = &this->world.at(i);
 		for (int j = 0; j < Continent->getContinent().size(); j++)
 		{
 			ifstream boarders;
 			boarders.open("boarders.txt");
-			cout << (Continent->getContinent().at(j)->getCountryName())<<":  ";
+			std::cout << (Continent->getContinent().at(j)->getCountryName())<<":  ";
 
 			regex nameOfCountryRx("^" + (Continent->getContinent().at(j)->countryName) + "(.*)");
 			while (!boarders.eof())
@@ -53,7 +54,7 @@ void RiskMap::instantiateMapLinks()
 							if (Continent->getContinent().at(k)->countryName == split)
 							{
 								Continent->getContinent().at(j)->addBoarders(Continent->getContinent().at(k));
-								cout << split << ", ";
+								std::cout << split << ", ";
 								break;
 							}
 							else
@@ -62,7 +63,7 @@ void RiskMap::instantiateMapLinks()
 								Node* prt = this->searchForCountry(split);
 								if (prt != nullptr)
 								{
-									cout << split << ", ";
+									std::cout << split << ", ";
 									Continent->getContinent().at(j)->addBoarders(prt);
 									break;
 								}
@@ -72,10 +73,12 @@ void RiskMap::instantiateMapLinks()
 				}
 			}
 			boarders.close();
-			cout << endl;
+			std::cout << endl;
 		}
-		cout << "-------------" << endl;
+		std::cout << "-------------" << endl;
 	}
+
+	std::cout << "Set up done!" << endl;
 }
 Node* RiskMap::searchForCountry(string name)
 {
@@ -93,4 +96,26 @@ Node* RiskMap::searchForCountry(string name)
 		}
 	}
 	return retVal;
+}
+RiskMap::~RiskMap()
+{
+
+}
+bool RiskMap::isCountryAdjacent(Node* country1, Node* country2)
+{
+	for (int i = 0; i < country1->getBoarders().size(); i++)
+	{
+		if (country2->countryName == country1->getBoarders().at(i)->countryName)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+}
+vector<Node*> RiskMap::getAllAdjacentContries(Node* country)
+{
+	return country->getBoarders();
 }

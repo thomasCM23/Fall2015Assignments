@@ -23,6 +23,8 @@ public:
 	std::vector<Node*> getBoarders();
 	std::string getCountryName();
 	int getNumOfTroops();
+	Player * getOwner();
+	void setOwner(Player *owner);
 };
 
 

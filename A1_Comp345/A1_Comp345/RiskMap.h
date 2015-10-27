@@ -21,6 +21,8 @@ public:
 	vector<Graph> getWorld();
 	vector<Node> getContinentbyIndex(int index);
 	Node* searchForCountry(string name);
+	bool isCountryAdjacent(Node* country1, Node* country2);
+	vector<Node*> getAllAdjacentContries(Node* country);
 protected:
 	void instantiateMapLinks();
 };
