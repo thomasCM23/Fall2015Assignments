@@ -7,6 +7,7 @@
 #include <regex>
 #include <sstream>
 #include "Node.h"
+#include "Player.h"
 class Graph
 {
 private:
@@ -21,7 +22,6 @@ public:
 	Node* getInfoAboutCountryByIndex(int index);
 	void setContinentName(std::string name);
 	std::string getContinentName();
-	void InstantiateMapLinks();
 };
 
 #endif
